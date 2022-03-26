@@ -11,10 +11,15 @@
         *ngFor="let post of posts"
         [post]="post"
     >
-        <small *ngIf="post?.text!.length > 10; else short" >post is long</small>
-        <ng-template #short>
-            <small>post is smoll</small>
-        </ng-template>
+        <div #info>
+
+            <small *ngIf="post?.text!.length > 10; else short" >post is long</small>
+            <ng-template #short>
+                <small>post is smoll</small>
+            </ng-template>
+
+        </div>
+
     </app-post>
 
 </div>
