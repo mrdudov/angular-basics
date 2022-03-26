@@ -12,8 +12,13 @@ export interface Post {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  posts:Post[] = [
+  posts:(Post | undefined)[] = [
     {title: 'Title 1', text: 'text 1', id:1},
     {title: 'Title 2', text: 'text 2', id:2}
   ]
+
+  updatePosts(post?: Post) {
+    this.posts.unshift(post)
+  }
+
 }
