@@ -1,16 +1,5 @@
 <h1>app</h1>
 
-<hr>
+<input type="text" [(ngModel)]="title">
 
-<button (click)="onClick()" >Click me!</button>
-
-<input 
-    type="text" 
-    (keyup.enter)="onInpunt($event)"
-    (blur)="onBlure(myInput.value)"
-    #myInput
->
-    
-<p>{{ inputValue }}</p>
-
-<hr>
+<p>{{title}}</p>

@@ -7,19 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  inputValue = '';
-  constructor() {}
+  title = 'Initial'
 
-  onInpunt(event: any) {
-    this.inputValue = (<HTMLInputElement>event.target).value;
-  }
-
-  onClick() {
-    console.log('clik me button');
-  }
-
-  onBlure(srt: string) {
-    this.inputValue = srt;
+  onInput(event: any) {
+    this.title = event.target.value
   }
 
 }
