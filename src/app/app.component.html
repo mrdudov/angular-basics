@@ -2,18 +2,15 @@
 
 <hr>
 
-<p>{{ title }}</p>
-<p>{{ number - 2 }}</p>
-<p>{{ arr }}</p>
-<p>{{ obj }}</p>
-<p>{{ obj.a }}</p>
-<p>{{ obj.b.c }}</p>
-<p>{{ 2 * 2 }}</p>
-<p>{{ 'Hello' + 'World' }}</p>
+<button (click)="onClick()" >Click me!</button>
+
+<input 
+    type="text" 
+    (keyup.enter)="onInpunt($event)"
+    (blur)="onBlure(myInput.value)"
+    #myInput
+>
+    
+<p>{{ inputValue }}</p>
 
 <hr>
-
-<img [src]="img" alt="">
-
-<hr>
-<app-post></app-post>
