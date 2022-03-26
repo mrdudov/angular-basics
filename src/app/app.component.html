@@ -1,18 +1,5 @@
 <h1>app</h1>
 
-<ul>
-    <li *ngFor="let item of arr; let idx = index" >
-        {{idx + 1}}<strong>{{item}}</strong>
-    </li>
-</ul>
-
-<ul>
-    <li *ngFor="let post of objs;">
-        <p>{{post.title}} <b>{{post.author}}</b></p>
-        <ul>
-            <li *ngFor="let comment of post.comments">
-                <p>{{comment.name}} <b>{{comment.text}}</b></p>
-            </li>
-        </ul>
-    </li>
-</ul>
+<p>
+    {{ now | date:'long' | uppercase }}
+</p>
