@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { AppCounterService } from './services/app-counter.service';
 
 
 @NgModule({
@@ -14,9 +13,7 @@ import { AppCounterService } from './services/app-counter.service';
     BrowserModule,
     FormsModule
   ],
-  providers: [
-    AppCounterService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
