@@ -14,7 +14,8 @@ import {
   OnDestroy, 
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
+  ViewEncapsulation
 } from '@angular/core';
 import { Post } from '../app.component';
 
@@ -22,7 +23,8 @@ import { Post } from '../app.component';
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class PostComponent implements 
   OnInit, 
@@ -49,7 +51,6 @@ export class PostComponent implements
 
   ngOnInit(): void {
     console.log('ngOnInit');
-    // console.log('this.infoRef', this.infoRef)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
