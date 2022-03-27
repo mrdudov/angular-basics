@@ -21,4 +21,11 @@ export class AppComponent {
     {title: 'title 3', text: 'text 3'},
   ]
 
+  addPost() {
+    this.posts.unshift({
+      title: 'added post',
+      text: 'some text'
+    })
+  }
+
 }
