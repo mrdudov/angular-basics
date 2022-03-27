@@ -21,4 +21,8 @@ export class AppComponent {
     this.posts.unshift(post)
   }
 
+  removePost(id: number) {
+    this.posts = this.posts.filter(p => p?.id !== id)
+  }
+
 }
