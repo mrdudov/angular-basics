@@ -1,15 +1,24 @@
 <div class="container">
     <h1>Angular Pipes</h1>
     <p>
-        {{ str | titlecase }}
+        {{ date }}
     </p>
     <p>
-        {{ str | uppercase }}
+        {{ date | date }}
     </p>
     <p>
-        {{ str | lowercase }}
+        {{ date | date:'fullDate' }}
     </p>
     <p>
-        {{ str | titlecase | slice:1:4 }}
+        {{ date | date:'longDate' }}
+    </p>
+    <p>
+        {{ date | date:'long' }}
+    </p>
+    <p>
+        {{ date | date:'yyyy' }}
+    </p>
+    <p>
+        {{ date | date:'MMMM dd yyyy' }}
     </p>
 </div>

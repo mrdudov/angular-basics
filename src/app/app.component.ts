@@ -11,4 +11,6 @@ export class AppComponent {
   
   str: string = 'hello world'
 
+  date: Date = new Date()
+
 }
