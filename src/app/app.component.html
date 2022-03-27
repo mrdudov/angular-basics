@@ -9,4 +9,42 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, tempore.
     </p>
 
+    <div class="btn" (click)="isVisible = !isVisible">Toggle</div>
+
+    <!-- <div *ngIf="isVisible" class="wrap">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Optio facere exercitationem minus obcaecati tempore,
+            accusamus ex error nostrum earum ut?
+        </p>
+    </div> -->
+
+    <!-- <ng-template [ngIf]="isVisible" >
+        <div class="wrap">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Optio facere exercitationem minus obcaecati tempore,
+                accusamus ex error nostrum earum ut?
+            </p>
+        </div>
+    </ng-template> -->
+
+    <!-- <div class="wrap" *appIfnot="!isVisible">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Optio facere exercitationem minus obcaecati tempore,
+            accusamus ex error nostrum earum ut?
+        </p>
+    </div> -->
+
+    <ng-template [appIfnot]="!isVisible">
+        <div class="wrap">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Optio facere exercitationem minus obcaecati tempore,
+                accusamus ex error nostrum earum ut?
+            </p>
+        </div>
+    </ng-template>
+
 </div>
