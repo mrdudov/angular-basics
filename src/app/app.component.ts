@@ -21,18 +21,16 @@ export class AppComponent implements OnInit {
         Validators.minLength(6)
       ]),
       address: new FormGroup({
-        country: new FormControl('ru'),
+        country: new FormControl('ru', Validators.required),
         city: new FormControl('', Validators.required)
       })
     })  
   }
 
   submit() {
-    if (this.form?.invalid){
       console.log('form: ', this.form); 
       const formData = {...this.form?.value}
       console.log('value: ', formData)
-    }
   }
 }
 

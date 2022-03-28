@@ -33,8 +33,6 @@
     <div class="card" formGroupName="address">
       <h2>Адрес</h2>
 
-      <pre>{{ form!.get('city') | json }}</pre>
-
       <div class="form-control">
         <label>Страна</label>
 
@@ -45,8 +43,8 @@
         </select>
       </div>
 
-      <div class="form-control" formArrayName="city" placeholder="City">
-        <input type="text">
+      <div class="form-control">
+        <input type="text" formControlName="city" placeholder="City">
       </div>
 
       <button class="btn" type="button" >Выбрать столицу</button>
