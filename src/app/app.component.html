@@ -11,8 +11,11 @@
       >
         <small *ngIf="form?.get('email')!.errors!['required']">email field is required</small>
         <small *ngIf="form?.get('email')!.errors!['email']">email field is incorrect</small>
+        <small *ngIf="form?.get('email')!.errors!['restrictedEmail']">email is in  restricted Emails list</small>
       </div>
     </div>
+
+    <!-- <pre>{{form?.get('email')!.errors|json}}</pre> -->
 
     <div class="form-control">
       <label>Пароль</label>
