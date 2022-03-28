@@ -32,5 +32,24 @@ export class AppComponent implements OnInit {
       const formData = {...this.form?.value}
       console.log('value: ', formData)
   }
+
+  setCaital() {
+    const cityKey = (this.form?.get('address')?.get('country')?.value).toString()
+    let city = ''
+
+    if (cityKey === 'ru') {
+      city = 'Москва'
+    } else if (cityKey === 'ua') {
+      city = 'Киев'
+    } else if (cityKey === 'by') {
+      city = 'Минск'
+    }
+    this.form?.patchValue({
+      address: {
+        city: city
+      }
+    })
+    
+  }
 }
 
