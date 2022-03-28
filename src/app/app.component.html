@@ -1,22 +1,49 @@
 <div class="container">
-    <h1>Angular Services</h1>
-    
-    <div class="card">
-        <h2>App Counter: {{ appCounterService.counter }}</h2>
+  <form class="card">
+    <h1>Angular Forms</h1>
 
-        <button class="btn" (click)="appCounterService.increase()">+</button>
-        <button class="btn" (click)="appCounterService.decrease()">-</button>
+    <div class="form-control">
+      <label>Email</label>
+      <input type="text" placeholder="Email">
+      <div class="validation"></div>
+    </div>
+
+    <div class="form-control">
+      <label>Пароль</label>
+      <input type="password" placeholder="Пароль">
+      <div class="validation"></div>
     </div>
 
     <div class="card">
-        <h2>Local Counter: {{ localCounterService.counter }}</h2>
+      <h2>Адрес</h2>
 
-        <button class="btn" (click)="localCounterService.increase()">+</button>
-        <button class="btn" (click)="localCounterService.decrease()">-</button>
+      <div class="form-control">
+        <label>Страна</label>
+
+        <select>
+          <option value="ru">Россия</option>
+          <option value="ua">Украина</option>
+          <option value="by">Беларусь</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <input type="text">
+      </div>
+
+      <button class="btn">Выбрать столицу</button>
     </div>
 
-    <hr>
+    <div class="card">
+      <h2>Ваши навыки</h2>
+      <button class="btn">Добавить умение</button>
+      <div class="form-control">
+        <label></label>
+        <input type="text">
+      </div>
+    </div>
 
-    <app-counter></app-counter>
+    <button class="btn">Отправить</button>
 
+  </form>
 </div>
