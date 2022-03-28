@@ -5,13 +5,31 @@
     <div class="form-control">
       <label>Email</label>
       <input type="text" placeholder="Email" formControlName="email">
-      <div class="validation"></div>
+      <div 
+        *ngIf="form!.get('email')?.invalid && form!.get('email')?.touched"
+        class="validation"
+      >
+        <small *ngIf="form?.get('email')!.errors!['required']">email field is required</small>
+        <small *ngIf="form?.get('email')!.errors!['email']">email field is incorrect</small>
+      </div>
     </div>
 
     <div class="form-control">
       <label>Пароль</label>
       <input type="password" placeholder="Пароль" formControlName="password">
-      <div class="validation"></div>
+
+      <!-- <pre>{{ form!.get('password')!.errors | json }}</pre> -->
+
+      <div
+        *ngIf="form!.get('password')?.invalid && form!.get('password')?.touched" 
+        class="validation"
+      >
+      <small *ngIf="form?.get('password')!.errors!['required']">password field is required</small>
+      <small *ngIf="form?.get('password')!.errors!['minlength']">
+        password field min lenght is {{form?.get('password')!.errors!['minlength'].requiredLength}}
+        current length is {{form?.get('password')!.errors!['minlength'].actualLength}}
+      </small>
+      </div>
     </div>
 
     <div class="card">
