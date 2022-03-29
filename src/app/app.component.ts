@@ -1,71 +1,14 @@
-import {Component, OnInit} from '@angular/core'
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
-import { AppAsyncValidators, AppValidators } from './app.validators';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  appState = 'off'
   
-  form?: FormGroup
-  
-  constructor(private uniqueEmailValidator: AppAsyncValidators) {}
-  
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl('', [
-        Validators.email, 
-        Validators.required,
-        AppValidators.restrictedEmails
-      ], [
-        this.uniqueEmailValidator.validate.bind(this.uniqueEmailValidator)
-      ]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(6)
-      ]),
-      address: new FormGroup({
-        country: new FormControl('ru', Validators.required),
-        city: new FormControl('', Validators.required)
-      }),
-      skills: new FormArray([])
-    })  
-  }
-
-  submit() {
-      console.log('form: ', this.form); 
-      const formData = {...this.form?.value}
-      console.log('value: ', formData)
-      this.form?.reset()
-  }
-
-  setCaital() {
-    const cityKey = (this.form?.get('address')?.get('country')?.value).toString()
-    let city = ''
-
-    if (cityKey === 'ru') {
-      city = 'Москва'
-    } else if (cityKey === 'ua') {
-      city = 'Киев'
-    } else if (cityKey === 'by') {
-      city = 'Минск'
-    }
-    this.form?.patchValue({
-      address: {
-        city: city
-      }
-    }) 
-  }
-
-  addSkill() {
-    const control = new FormControl('', Validators.required);
-    // (<FormArray>this.form?.get('skills')).push()
-    (this.form?.get('skills') as FormArray).push(control)
-  }
-
-  getControls() {
-    return (this.form!.get('skills') as FormArray).controls;
+  handleChange() {
+    console.log(this.appState);
   }
 }
