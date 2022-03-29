@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
-import { AppValidators } from './app.validators';
+import { AppAsyncValidators, AppValidators } from './app.validators';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +11,16 @@ export class AppComponent implements OnInit {
   
   form?: FormGroup
   
+  constructor(private uniqueEmailValidator: AppAsyncValidators) {}
+  
   ngOnInit(): void {
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.email, 
         Validators.required,
         AppValidators.restrictedEmails
+      ], [
+        this.uniqueEmailValidator.validate.bind(this.uniqueEmailValidator)
       ]),
       password: new FormControl(null, [
         Validators.required,

@@ -9,9 +9,22 @@
         *ngIf="form!.get('email')?.invalid && form!.get('email')?.touched"
         class="validation"
       >
-        <small *ngIf="form?.get('email')!.errors!['required']">email field is required</small>
-        <small *ngIf="form?.get('email')!.errors!['email']">email field is incorrect</small>
-        <small *ngIf="form?.get('email')!.errors!['restrictedEmail']">email is in  restricted Emails list</small>
+        <small *ngIf="form?.get('email')!.errors!['required']">
+          email field is required
+        </small>
+
+        <small *ngIf="form?.get('email')!.errors!['email']">
+          email field is incorrect
+        </small>
+
+        <small *ngIf="form?.get('email')!.errors!['restrictedEmail']">
+          email is in restricted Emails list
+        </small>
+
+        <small *ngIf="form?.get('email')!.errors!['uniqueEmail']">
+          email is not unique
+        </small>
+
       </div>
     </div>
 
