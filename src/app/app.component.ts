@@ -38,6 +38,7 @@ export class AppComponent implements OnInit {
       console.log('form: ', this.form); 
       const formData = {...this.form?.value}
       console.log('value: ', formData)
+      this.form?.reset()
   }
 
   setCaital() {
