@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     this.loading = true
     this.todosService.fetchTodo()
       .subscribe(todos => {
-        this.todos = todos
+        this.todos = todos!
         this.loading = false
       }, error => {
         this.error = error.message
@@ -59,6 +59,7 @@ export class AppComponent implements OnInit {
 
   compliteTodo(id: number | undefined) {
     this.todosService.compliteTodo(id).subscribe(todo => {
+      console.log(todo)
       this.todos.find(t => t.id === todo.id)!.complited = true
     })
   }
