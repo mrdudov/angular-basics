@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
 
   todoTitle = ''
 
+  error = ''
+
   constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {
@@ -43,6 +45,8 @@ export class AppComponent implements OnInit {
       .subscribe(todos => {
         this.todos = todos
         this.loading = false
+      }, error => {
+        this.error = error.message
       })
   }
 

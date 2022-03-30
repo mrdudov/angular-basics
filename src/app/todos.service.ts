@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { delay, Observable } from "rxjs";
+import { catchError, delay, Observable, throwError } from "rxjs";
 
 export interface Todo {
     complited: boolean
@@ -17,8 +17,15 @@ export class TodosService {
     }
 
     fetchTodo(): Observable<Todo[]> {
-        return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
-            .pipe(delay(500))
+        return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos1?_limit=2')
+            .pipe(
+                delay(500),
+                catchError(error => {
+                    console.log('fetchTodo error', error.message)
+                    return throwError(error)
+                    // TODO: throwError(error) deprecated
+                })
+            )
     }
 
     removeTodo(id: number| undefined): Observable<void> {
