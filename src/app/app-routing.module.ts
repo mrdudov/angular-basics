@@ -4,7 +4,11 @@ import {HomePageComponent} from './home-page/home-page.component'
 
 @NgModule({
   imports: [RouterModule.forRoot([
-    {path: '', component: HomePageComponent, pathMatch: 'full'}
+    {path: '', component: HomePageComponent, pathMatch: 'full'},
+    {
+      path: 'about', 
+      loadChildren: () => import('./about-page/about-page.module').then(mod => mod.AboutModule)
+    }
   ])],
   exports: [RouterModule]
 })
