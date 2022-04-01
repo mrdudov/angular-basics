@@ -1,34 +1,16 @@
-import {BrowserModule} from '@angular/platform-browser'
-import {NgModule} from '@angular/core'
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppComponent} from './app.component'
-import {FormsModule} from '@angular/forms';
-import { ModalComponent } from './modal/modal.component'
-import { RefDirective } from './ref.directive';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ModalComponent,
-    RefDirective
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
+    BrowserModule
   ],
   providers: [],
-  entryComponents: [
-    ModalComponent
-  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
