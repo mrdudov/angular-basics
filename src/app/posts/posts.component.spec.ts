@@ -2,7 +2,7 @@ import {PostsComponent} from "./posts.component";
 import {PostsService} from "./posts.service";
 import {of} from "rxjs";
 
-describe('PostsComponent', () => {
+xdescribe('PostsComponent', () => {
   let component: PostsComponent
   let service: PostsService
 
