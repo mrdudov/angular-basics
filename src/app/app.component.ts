@@ -72,10 +72,16 @@ import { Component } from '@angular/core';
   ]
 })
 export class AppComponent {
+
   boxState = 'start'
   visible = true
+
   runAnimation() {
     this.boxState = this.boxState === 'end' ? 'start' : 'end'
+  }
+
+  animationStart(event: any) {
+    console.log('animationStart', event)
   }
 
 }
