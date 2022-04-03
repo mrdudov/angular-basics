@@ -1,7 +1,7 @@
 import {PostsComponent} from "./posts.component";
 import {PostsService} from "./posts.service";
 import {of} from "rxjs";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from "@angular/core/testing";
 import { HttpClientModule } from "@angular/common/http";
 
 describe('PostsComponent', () => {
@@ -27,7 +27,7 @@ describe('PostsComponent', () => {
     // component = new PostsComponent(service)
   })
 
-  it('should fetch posts on ngOnInit', () => {
+  xit('should fetch posts on ngOnInit', () => {
     const posts = [
       {title: 'title 1'},
       {title: 'title 2'}, 
@@ -38,5 +38,35 @@ describe('PostsComponent', () => {
     fixture.detectChanges()
     expect(component.posts).toEqual(posts)
   })
+
+  it('should fetch posts on ngOnInit (Promise)(v1)', waitForAsync( () => {
+    const posts = [
+      {title: 'title 1'},
+      {title: 'title 2'}, 
+      {title: 'title 3'}, 
+      {title: 'title 4'}, 
+    ]
+    spyOn(service, 'fetchPromise').and.returnValue(Promise.resolve(posts))
+    fixture.detectChanges()
+    
+    fixture.whenStable().then(() => {
+      expect(component.posts).toEqual(posts)
+    })
+    
+  }))
+
+  it('should fetch posts on ngOnInit (Promise)(v2)', fakeAsync( () => {
+    const posts = [
+      {title: 'title 1'},
+      {title: 'title 2'}, 
+      {title: 'title 3'}, 
+      {title: 'title 4'}, 
+    ]
+    spyOn(service, 'fetchPromise').and.returnValue(Promise.resolve(posts))
+    fixture.detectChanges()
+    tick()
+    expect(component.posts).toEqual(posts)
+    
+  }))
 
 })
