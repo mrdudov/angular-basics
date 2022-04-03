@@ -1,6 +1,7 @@
 import { 
   animate, 
   group, 
+  query, 
   sequence, 
   state, 
   style, 
@@ -28,11 +29,17 @@ import { Component } from '@angular/core';
       transition('start => end', animate(450)),
       transition('end => start', animate('800ms ease-in-out')),
       transition('special <=> *', [
-        style({background:'green'}),
-        animate(1000, style({
-          background: 'pink'
-        })),
-        animate(750)
+        group([
+          query('h4', animate(1500, style({
+            fontSize: '.5rem',
+            color: 'red'
+          }))),
+          style({background:'green'}),
+          animate(1000, style({
+            background: 'pink'
+          })),
+          animate(750)
+        ])
       ]),
       // void => *
       transition(':enter', [
