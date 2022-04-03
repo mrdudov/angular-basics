@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { By } from '@angular/platform-browser';
+import { ActivatedRoute, Params, Router, RouterOutlet } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Observable, of, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { RoutingComponent } from './routing.component';
 
@@ -18,7 +19,6 @@ class ActivatedRouteStab {
   get params() {
     return this.subject.asObservable()
   }
-  // params: Observable<Params> = of({someParam: 'value'})
 }
 
 describe('RoutingComponent', () => {
@@ -59,4 +59,10 @@ describe('RoutingComponent', () => {
     route.push({id: '0'})
     expect(spy).toHaveBeenCalledOnceWith(['/404'])
   })
+
+  it('should have router-outlet directive', () => {
+    let de = fixture.debugElement.query(By.directive(RouterOutlet))
+    expect(de).not.toBeNull()
+  })
+
 });
