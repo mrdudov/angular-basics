@@ -40,7 +40,6 @@
             required length {{form.get('password')?.errors!['minlength']['requiredLength']}}
             actual length {{form.get('password')?.errors!['minlength']['actualLength']}}
         </small>
-            <pre>{{form.get('password')?.errors | json}}</pre>
         </div>
     </div>
 

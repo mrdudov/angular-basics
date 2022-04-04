@@ -7,6 +7,20 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AuthServices } from "./shared/services/auth.service";
+import { SharedModule } from "./shared/shared.module";
+
+const path = [
+    {
+        path: '', component: AdminLayoutComponent, children: [
+            {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
+            {path: 'login', component: LoginPageComponent},
+            {path: 'dashboard', component: DashboardPageComponent},
+            {path: 'create', component: CreatePageComponent},
+            {path: 'post/:id/edit', component: EditPageComponent}
+        ]
+    }
+]
 
 @NgModule({
     declarations: [
@@ -20,20 +34,14 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forChild([
-            {
-                path: '', component: AdminLayoutComponent, children: [
-                    {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
-                    {path: 'login', component: LoginPageComponent},
-                    {path: 'dashboard', component: DashboardPageComponent},
-                    {path: 'create', component: CreatePageComponent},
-                    {path: 'post/:id/edit', component: EditPageComponent}
-                ]
-            }
-        ])
+        SharedModule,
+        RouterModule.forChild(path)
     ],
     exports: [
         RouterModule
+    ],
+    providers: [
+        AuthServices
     ]
 })
 export class AdminModule {
