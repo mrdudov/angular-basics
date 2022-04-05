@@ -15,11 +15,17 @@ export class AuthServices {
         private http: HttpClient
     ) {}
 
-    get token(): string {
-        return ''
+    get token(): string | null {
+        const expDate = new Date(localStorage.getItem('fb-token-exp')!)
+        if (new Date() > expDate ) {
+            this.logout()
+            return null
+        }
+        return localStorage.getItem('fb-token')!
     }
 
     login(user: User): Observable<any> {
+        user.returnSecureToken = true
         return this.http.post(login_url, user)
             .pipe(
                 tap(this.setToken)
@@ -27,6 +33,7 @@ export class AuthServices {
     }
 
     logout() {
+        this.setToken(null)
     }
 
     isAuthenticated(): boolean {
@@ -35,7 +42,15 @@ export class AuthServices {
 
     // private setToken(response: FbAuthResponse) {
     private setToken(response: any) {
-        console.log('setToken response', response)
+        if (response) {
+            const expDate = new Date(
+                new Date().getTime() 
+                + parseInt(response.expiresIn) * 1000
+            )
+            localStorage.setItem('fb-token', response.idToken)
+            localStorage.setItem('fb-token-exp', expDate.toString())
+        } else {
+            localStorage.clear()
+        }
     }
-
 }
