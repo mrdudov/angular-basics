@@ -6,7 +6,9 @@ import { environment } from "src/environments/environment";
 
 const login_url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthServices {
 
     public error$: Subject<string> = new Subject<string>()
