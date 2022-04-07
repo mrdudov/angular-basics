@@ -13,6 +13,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   searchStr: string = ''
   posts: Post[] = []
   pSub: Subscription = new Subscription()
+  dSub: Subscription = new Subscription()
   
   constructor(
     private postsService: PostsService
@@ -22,6 +23,9 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     if(this.pSub) {
       this.pSub.unsubscribe()
     }
+    if (this.dSub) {
+      this.dSub.unsubscribe()
+    }
   }
 
   ngOnInit(): void {
@@ -30,8 +34,10 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     })
   }
 
-  remove(id: string | undefined) {
-
+  remove(id: string) {
+    this.dSub = this.postsService.remove(id).subscribe(() => {
+      this.posts = this.posts.filter(post => post.id !== id)
+    })
   }
 
 }
