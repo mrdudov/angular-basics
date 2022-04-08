@@ -1,50 +1,26 @@
-<div class="post">
-    <div class="header">
-        <h1>Post title</h1>
+<div *ngIf="post$ | async as post; else loading">
 
-        <button routerLink="/" class="btn btn-link">To home page</button>
+    <div class="post">
+        <div class="header">
+            <h1>{{ post.title }}</h1>
+
+            <button routerLink="/" class="btn btn-link">To home page</button>
+        </div>
+
+        <div class="info">
+            <strong>{{ post.author }}</strong>
+            <small>{{ post.date | date:'medium' }}</small>
+        </div>
+        
+        <div>
+            <quill-view-html [content]="post.text"></quill-view-html>
+        </div>
     </div>
 
-    <div class="info">
-        <strong>Author</strong>
-        <small>04.04.2022</small>
-    </div>
-    
-    <div>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit asperiores 
-            nostrum vitae unde, praesentium ex, blanditiis, incidunt ullam eius qui. Suscipit, 
-            mollitia eos a inventore recusandae repellendus voluptatum architecto qui 
-            voluptates aliquam ex! Deserunt vero commodi nemo quia earum repudiandae 
-            suscipit quaerat. Non numquam ratione earum neque vel possimus.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit asperiores 
-            nostrum vitae unde, praesentium ex, blanditiis, incidunt ullam eius qui. Suscipit, 
-            mollitia eos a inventore recusandae repellendus voluptatum architecto qui 
-            voluptates aliquam ex! Deserunt vero commodi nemo quia earum repudiandae 
-            suscipit quaerat. Non numquam ratione earum neque vel possimus.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit asperiores 
-            nostrum vitae unde, praesentium ex, blanditiis, incidunt ullam eius qui. Suscipit, 
-            mollitia eos a inventore recusandae repellendus voluptatum architecto qui 
-            voluptates aliquam ex! Deserunt vero commodi nemo quia earum repudiandae 
-            suscipit quaerat. Non numquam ratione earum neque vel possimus.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit asperiores 
-            nostrum vitae unde, praesentium ex, blanditiis, incidunt ullam eius qui. Suscipit, 
-            mollitia eos a inventore recusandae repellendus voluptatum architecto qui 
-            voluptates aliquam ex! Deserunt vero commodi nemo quia earum repudiandae 
-            suscipit quaerat. Non numquam ratione earum neque vel possimus.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit asperiores 
-            nostrum vitae unde, praesentium ex, blanditiis, incidunt ullam eius qui. Suscipit, 
-            mollitia eos a inventore recusandae repellendus voluptatum architecto qui 
-            voluptates aliquam ex! Deserunt vero commodi nemo quia earum repudiandae 
-            suscipit quaerat. Non numquam ratione earum neque vel possimus.
-        </p>
-    </div>
 </div>
+
+<ng-template #loading>
+    <p class="text-center">
+        Loaging...
+    </p>
+</ng-template>
